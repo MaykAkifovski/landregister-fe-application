@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+// @ts-ignore
+import {LandRegister} from '../../models/LandRegister';
 
 @Component({
   selector: 'app-create-land-register',
@@ -7,7 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateLandRegisterComponent implements OnInit {
 
-  constructor() { }
+  landRegister: LandRegister = {
+    docType: 'landRegister',
+    titlePage: {},
+    inventoryRegister: {},
+    owners: [{}, {}],
+    reservationNote: ''
+  };
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

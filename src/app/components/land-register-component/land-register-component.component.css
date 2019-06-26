@@ -1,18 +1,18 @@
-.landRegister {
+.container {
   background: aliceblue;
   padding: 10px;
   border-bottom: 5px #555555 dashed;
 }
 
-.landRegister h2 {
+.h2 {
   padding: 10px;
   border-top: 1px #555555 solid;
 }
 
-.landRegister ul {
+.ul {
   padding-bottom: 15px;
 }
 
-.landRegister ul li {
+.li {
   padding-left: 20px;
 }

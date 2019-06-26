@@ -1,12 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { AllLandRegistersComponent } from './components/all-land-registers/all-land-registers.component';
-import { LandRegisterComponentComponent } from './components/land-register-component/land-register-component.component';
-import { HeaderComponent } from './components/layout/header/header.component';
-import { CreateLandRegisterComponent } from './components/create-land-register/create-land-register.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {AllLandRegistersComponent} from './components/all-land-registers/all-land-registers.component';
+import {LandRegisterComponentComponent} from './components/land-register-component/land-register-component.component';
+import {HeaderComponent} from './components/layout/header/header.component';
+import {CreateLandRegisterComponent} from './components/create-land-register/create-land-register.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,11 @@ import { CreateLandRegisterComponent } from './components/create-land-register/c
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
