@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 // @ts-ignore
 import {LandRegister} from '../../models/LandRegister';
 
@@ -8,6 +8,7 @@ import {LandRegister} from '../../models/LandRegister';
   styleUrls: ['./create-land-register.component.css']
 })
 export class CreateLandRegisterComponent implements OnInit {
+  @Output() createLandRegister: EventEmitter<LandRegister> = new EventEmitter();
 
   landRegister: LandRegister = {
     docType: 'landRegister',
@@ -23,4 +24,8 @@ export class CreateLandRegisterComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit() {
+    this.createLandRegister.emit(this.landRegister);
+    console.log('onSubmit()' + this.landRegister);
+  }
 }

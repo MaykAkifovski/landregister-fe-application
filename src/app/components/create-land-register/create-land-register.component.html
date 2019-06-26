@@ -2,7 +2,7 @@
 
   <h1>Land Register Form</h1>
 
-  <form>
+  <form (ngSubmit)="onSubmit()" #landRegisterForm="ngForm">
     <div class="container">
       <h2>Title page</h2>
       <div class="container">
@@ -177,7 +177,9 @@
       </div>
     </div>
 
-    <button type="create" class="btn btn-success">Create</button>
+    <button type="submit" class="btn btn-success"
+            [disabled]="!landRegisterForm.form.valid"
+    >Create land register</button>
 
   </form>
 
