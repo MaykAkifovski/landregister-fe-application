@@ -1,7 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {Input} from '@angular/core';
-// @ts-ignore
-import {LandRegister} from '../../models/LandRegister';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-land-register-component',
@@ -17,5 +14,4 @@ export class LandRegisterComponentComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

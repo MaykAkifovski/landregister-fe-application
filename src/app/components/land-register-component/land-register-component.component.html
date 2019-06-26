@@ -1,4 +1,32 @@
-<div>
-  {{ landRegister.docType }}
-  {{ landRegister.reservationNote }}
+<div class="landRegister">
+  <h2>Title Page</h2>
+  <ul>
+    <li><b><u>District court:</u></b> {{landRegister.titlePage.districtCourt}}</li>
+    <li><b><u>Land registry district:</u></b> {{landRegister.titlePage.landRegistryDistrict}}</li>
+    <li><b><u>Sheet number:</u></b> {{landRegister.titlePage.sheetNumber}}</li>
+  </ul>
+  <h2>Inventory register</h2>
+  <ul>
+    <li><b><u>Subdistrict:</u></b> {{landRegister.inventoryRegister.subdistrict}}</li>
+    <li><b><u>Hall:</u></b> {{landRegister.inventoryRegister.hall}}</li>
+    <li><b><u>Parcel:</u></b> {{landRegister.inventoryRegister.parcel}}</li>
+    <li><b><u>EconomicType:</u></b> {{landRegister.inventoryRegister.economicType}}</li>
+    <li><b><u>Location:</u></b> {{landRegister.inventoryRegister.location}}</li>
+    <li><b><u>Size:</u></b> {{landRegister.inventoryRegister.size}}</li>
+  </ul>
+  <h2>Owners</h2>
+  <ul *ngFor="let owner of landRegister.owners">
+    <li><b><u>Identity number:</u></b> {{owner.identityNumber}}</li>
+    <li><b><u>Title:</u></b> {{owner.title}}</li>
+    <li><b><u>First name:</u></b> {{owner.firstname}}</li>
+    <li><b><u>Last name:</u></b> {{owner.lastname}}</li>
+    <li><b><u>Date of birth:</u></b> {{owner.dateOfBirth}}</li>
+    <li><b><u>Postcode:</u></b> {{owner.postcode}}</li>
+    <li><b><u>City:</u></b> {{owner.city}}</li>
+    <li><b><u>Street:</u></b> {{owner.street}}</li>
+    <li><b><u>Street number:</u></b> {{owner.streetnumber}}</li>
+  </ul>
+  <h3>
+    <b><u>Reservation note:</u></b> {{ landRegister.reservationNote }}
+  </h3>
 </div>
