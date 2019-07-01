@@ -9,6 +9,7 @@ import {HeaderComponent} from './components/layout/header/header.component';
 import {CreateLandRegisterComponent} from './components/create-land-register/create-land-register.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {CreateReservationNoteComponent} from './components/create-reservation-note/create-reservation-note.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {HttpClientModule} from '@angular/common/http';
     AllLandRegistersComponent,
     LandRegisterComponentComponent,
     HeaderComponent,
-    CreateLandRegisterComponent
+    CreateLandRegisterComponent,
+    CreateReservationNoteComponent
   ],
   imports: [
     BrowserModule,

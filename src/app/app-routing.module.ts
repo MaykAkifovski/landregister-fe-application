@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 import {AllLandRegistersComponent} from './components/all-land-registers/all-land-registers.component';
 import {CreateLandRegisterComponent} from './components/create-land-register/create-land-register.component';
+import {CreateReservationNoteComponent} from './components/create-reservation-note/create-reservation-note.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,9 @@ const routes: Routes = [
   },
   {
     path: 'createLandRegister', component: CreateLandRegisterComponent
+  },
+  {
+    path: 'createReservationNote', component: CreateReservationNoteComponent
   }
 ];
 

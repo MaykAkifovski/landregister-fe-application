@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-// @ts-ignore
 import {LandRegister} from '../models/LandRegister';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
+import {ReservationNoteRequest} from '../models/ReservationNoteRequest';
 
 const url = 'http://149.233.56.37:8080';
 const queryAllLandRegisters = '/queryAllLandRegisters';
 const registerEnrollUser = '/registerEnrollUser';
 const createLandRegister = '/createLandRegister';
+const createReservationNote = '/createReservationNote';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -20,8 +21,6 @@ const httpOptions = {
 export class LandRegisterService {
 
   constructor(private httpClient: HttpClient) {
-    // this.httpClient.get(url + registerEnrollUser)
-    //   .subscribe();
   }
 
   queryAllLandRegisters(): Observable<LandRegister[]> {
@@ -31,6 +30,11 @@ export class LandRegisterService {
   createLandRegister(newLandRegister: LandRegister): Observable<LandRegister> {
     return this.httpClient.post<LandRegister>(url + createLandRegister, newLandRegister, httpOptions)
       .pipe(catchError(() => this.handleError('createLandRegister')));
+  }
+
+  createReservationNote(reservationNoteRequest: ReservationNoteRequest): Observable<ReservationNoteRequest> {
+    return this.httpClient.post<LandRegister>(url + createReservationNote, reservationNoteRequest, httpOptions)
+      .pipe(catchError(() => this.handleError('createReservationNote')));
   }
 
 
