@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {LandRegister} from '../../models/LandRegister';
 
 @Component({
   selector: 'app-land-register-component',
@@ -7,7 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class LandRegisterComponentComponent implements OnInit {
 
-  @Input() landRegister;
+  @Input() landRegister: LandRegister;
 
   constructor() {
   }

@@ -15,16 +15,17 @@
     <li><b><u>Size:</u></b> {{landRegister.inventoryRegister.size}}</li>
   </ul>
   <h2>Owners</h2>
-  <ul *ngFor="let owner of landRegister.owners">
+  <ul *ngFor="let owner of landRegister.owners;let i=index">
+    <h3>Owner {{i + 1}}</h3>
     <li><b><u>Identity number:</u></b> {{owner.identityNumber}}</li>
     <li><b><u>Title:</u></b> {{owner.title}}</li>
-    <li><b><u>First name:</u></b> {{owner.firstname}}</li>
-    <li><b><u>Last name:</u></b> {{owner.lastname}}</li>
+    <li><b><u>First name:</u></b> {{owner.firstName}}</li>
+    <li><b><u>Last name:</u></b> {{owner.lastName}}</li>
     <li><b><u>Date of birth:</u></b> {{owner.dateOfBirth}}</li>
     <li><b><u>Postcode:</u></b> {{owner.postcode}}</li>
     <li><b><u>City:</u></b> {{owner.city}}</li>
     <li><b><u>Street:</u></b> {{owner.street}}</li>
-    <li><b><u>Street number:</u></b> {{owner.streetnumber}}</li>
+    <li><b><u>Street number:</u></b> {{owner.streetNumber}}</li>
   </ul>
   <h3>
     <b><u>Reservation note:</u></b> {{ landRegister.reservationNote }}

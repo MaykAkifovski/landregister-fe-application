@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-// @ts-ignore
 import {LandRegister} from '../../models/LandRegister';
 import {LandRegisterService} from '../../services/land-register.service';
 

@@ -4,18 +4,21 @@ import {HttpClient} from '@angular/common/http';
 import {LandRegister} from '../models/LandRegister';
 import {Observable} from 'rxjs';
 
-const url = 'http://localhost:8080';
+const url = 'http://149.233.56.37:8080';
 const queryAllLandRegisters = '/queryAllLandRegisters';
+const registerEnrollUser = '/registerEnrollUser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LandRegisterService {
 
-  constructor(private htteClient: HttpClient) {
+  constructor(private httpClient: HttpClient) {
+    // this.httpClient.get(url + registerEnrollUser)
+    //   .subscribe();
   }
 
   queryAllLandRegisters(): Observable<LandRegister[]> {
-    return this.htteClient.get<LandRegister[]>(url + queryAllLandRegisters);
+    return this.httpClient.get<LandRegister[]>(url + queryAllLandRegisters);
   }
 }

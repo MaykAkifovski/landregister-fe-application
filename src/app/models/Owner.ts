@@ -1,11 +1,11 @@
 export class Owner {
   identityNumber: string;
   title: string;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   dateOfBirth: string;
   postcode: string;
   city: string;
   street: string;
-  streetnumber: string;
+  streetNumber: string;
 }
