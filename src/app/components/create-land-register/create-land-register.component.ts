@@ -1,6 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LandRegister} from '../../models/LandRegister';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, Validators} from '@angular/forms';
+import {LandRegisterService} from '../../services/land-register.service';
 
 @Component({
   selector: 'app-create-land-register',
@@ -8,7 +9,6 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angul
   styleUrls: ['./create-land-register.component.css']
 })
 export class CreateLandRegisterComponent implements OnInit {
-  @Output() createLandRegister: EventEmitter<LandRegister> = new EventEmitter();
 
   landRegister = this.fb.group(
     {
@@ -43,11 +43,11 @@ export class CreateLandRegisterComponent implements OnInit {
           )
         ]
       ),
-      reservationNote: [false, Validators.required],
+      reservationNote: [false],
     }
   );
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private landRegisterService: LandRegisterService) {
   }
 
   ngOnInit() {
@@ -74,7 +74,12 @@ export class CreateLandRegisterComponent implements OnInit {
     );
   }
 
-  removeOwner(index) {
-    this.owners.removeAt(index - 1);
+  removeOwner() {
+    this.owners.removeAt(this.owners.length - 1);
+  }
+
+  createLandRegister() {
+    const newLandRegister: LandRegister = this.landRegister.value as LandRegister;
+    this.landRegisterService.createLandRegister(newLandRegister).subscribe();
   }
 }

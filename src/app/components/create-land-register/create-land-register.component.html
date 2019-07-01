@@ -2,296 +2,199 @@
 
   <h1>Land Register Form</h1>
 
-  <p>
-    Form Status: {{landRegister.status}}
-  </p>
-
   <form [formGroup]="landRegister">
 
-    <div formGroupName="titlePage">
+    <div class="container" formGroupName="titlePage">
       <h2>Title page</h2>
-      <label>
-        District court:
-        <input type="text" formControlName="districtCourt" required>
-      </label>
-      <label>
-        Land registry district:
-        <input type="text" formControlName="landRegistryDistrict" required>
-      </label>
-      <label>
-        Sheet number:
-        <input type="text" formControlName="sheetNumber" required>
-      </label>
-    </div>
-
-    <div formGroupName="inventoryRegister">
-      <h2>Inventory register</h2>
-      <label>
-        Subdistrict:
-        <input type="text" formControlName="subdistrict" required>
-      </label>
-      <label>
-        Hall:
-        <input type="text" formControlName="hall" required>
-      </label>
-      <label>
-        Parcel:
-        <input type="text" formControlName="parcel" required>
-      </label>
-      <label>
-        Economic type:
-        <input type="text" formControlName="economicType" required>
-      </label>
-      <label>
-        Location:
-        <input type="text" formControlName="location" required>
-      </label>
-      <label>
-        Size:
-        <input type="text" formControlName="size" required>
-      </label>
-    </div>
-
-    <div formArrayName="owners">
-      <h2>Owners</h2>
-      <div>
-        <button (click)="addOwner()">
-          add Owner
-        </button>
-      </div>
-      <div>
-        <label>
-          Index of owner to be removed:
-          <input type="text" formControlName="index" required>
-        </label>
-        <button (click)="removeOwner(index)">
-          add Owner
-        </button>
-      </div>
-
-      <div *ngFor="let k of owners.controls;let i=index">
-        <div [formGroupName]="i">
-          <h3>Owner {{i + 1}}</h3>
+      <div class="container">
+        <div class="form-group">
           <label>
-            Identity number:
-            <input type="text" formControlName="identityNumber" required>
+            District court:
+            <input class="form-control" type="text" formControlName="districtCourt" required>
           </label>
+        </div>
+        <div class="form-group">
           <label>
-            Title:
-            <input type="text" formControlName="title" required>
+            Land registry district:
+            <input class="form-control" type="text" formControlName="landRegistryDistrict" required>
           </label>
+        </div>
+        <div class="form-group">
           <label>
-            First name:
-            <input type="text" formControlName="firstName" required>
-          </label>
-          <label>
-            Last name:
-            <input type="text" formControlName="lastName" required>
-          </label>
-          <label>
-            Date of Birth:
-            <input type="text" formControlName="dateOfBirth" required>
-          </label>
-          <label>
-            Postcode:
-            <input type="text" formControlName="postcode" required>
-          </label>
-          <label>
-            City:
-            <input type="text" formControlName="city" required>
-          </label>
-          <label>
-            Street:
-            <input type="text" formControlName="street" required>
-          </label>
-          <label>
-            Street number:
-            <input type="text" formControlName="streetNumber" required>
+            Sheet number:
+            <input class="form-control" type="text" formControlName="sheetNumber" required>
           </label>
         </div>
       </div>
     </div>
 
-    <div>
-      <label>
-        Reservation note:
-        <input type="checkbox" formControlName="reservationNote" required>
-      </label>
+    <div class="container" formGroupName="inventoryRegister">
+      <h2>Inventory register</h2>
+      <div class="container">
+        <div class="form-group">
+          <label>
+            Subdistrict:
+            <input class="form-control" type="text" formControlName="subdistrict" required>
+          </label>
+        </div>
+      </div>
+      <div class="container">
+        <div class="form-group">
+          <label>
+            Hall:
+            <input class="form-control" type="text" formControlName="hall" required>
+          </label>
+        </div>
+      </div>
+      <div class="container">
+        <div class="form-group">
+          <label>
+            Parcel:
+            <input class="form-control" type="text" formControlName="parcel" required>
+          </label>
+        </div>
+      </div>
+      <div class="container">
+        <div class="form-group">
+          <label>
+            Economic type:
+            <input class="form-control" type="text" formControlName="economicType" required>
+          </label>
+        </div>
+      </div>
+      <div class="container">
+        <div class="form-group">
+          <label>
+            Location:
+            <input class="form-control" type="text" formControlName="location" required>
+          </label>
+        </div>
+      </div>
+      <div class="container">
+        <div class="form-group">
+          <label>
+            Size:
+            <input class="form-control" type="text" formControlName="size" required>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" formArrayName="owners">
+      <h2>Owners</h2>
+      <div class="container">
+        <div *ngFor="let k of owners.controls;let i=index">
+          <div [formGroupName]="i">
+            <h3>Owner {{i + 1}}</h3>
+            <div class="container">
+              <div class="container">
+                <div class="form-group">
+                  <label>
+                    Identity number:
+                    <input class="form-control" type="text" formControlName="identityNumber" required>
+                  </label>
+                </div>
+              </div>
+              <div class="container">
+                <div class="form-group">
+                  <label>
+                    Title:
+                    <input class="form-control" type="text" formControlName="title" required>
+                  </label>
+                </div>
+              </div>
+              <div class="container">
+                <div class="form-group">
+                  <label>
+                    First name:
+                    <input class="form-control" type="text" formControlName="firstName" required>
+                  </label>
+                </div>
+              </div>
+              <div class="container">
+                <div class="form-group">
+                  <label>
+                    Last name:
+                    <input class="form-control" type="text" formControlName="lastName" required>
+                  </label>
+                </div>
+              </div>
+              <div class="container">
+                <div class="form-group">
+                  <label>
+                    Date of Birth:
+                    <input class="form-control" type="text" formControlName="dateOfBirth" required>
+                  </label>
+                </div>
+              </div>
+              <div class="container">
+                <div class="form-group">
+                  <label>
+                    Postcode:
+                    <input class="form-control" type="text" formControlName="postcode" required>
+                  </label>
+                </div>
+              </div>
+              <div class="container">
+                <div class="form-group">
+                  <label>
+                    City:
+                    <input class="form-control" type="text" formControlName="city" required>
+                  </label>
+                </div>
+              </div>
+              <div class="container">
+                <div class="form-group">
+                  <label>
+                    Street:
+                    <input class="form-control" type="text" formControlName="street" required>
+                  </label>
+                </div>
+              </div>
+              <div class="container">
+                <div class="form-group">
+                  <label>
+                    Street number:
+                    <input class="form-control" type="text" formControlName="streetNumber" required>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div>
+          <button class="btn" (click)="addOwner()">
+            add Owner
+          </button>
+          <button class="btn" (click)="removeOwner()">
+            remove last Owner
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="form-group">
+        <label>
+          Reservation note:
+          <input type="checkbox" formControlName="reservationNote">
+        </label>
+      </div>
     </div>
 
     <button type="submit"
             class="btn btn-success"
             [disabled]="!landRegister.valid"
+            (click)="createLandRegister()"
     >
       {{landRegister.valid ? 'Create land register' : 'Land register has missing fields'}}
     </button>
   </form>
 
   <app-land-register-component [landRegister]="landRegister.value"></app-land-register-component>
-
-  <!--  <form (ngSubmit)="onSubmit()" #landRegisterForm="ngForm">-->
-  <!--    <div class="container">-->
-  <!--      <h2>Title page</h2>-->
-  <!--      <div class="container">-->
-  <!--        <div class="form-group">-->
-  <!--          <label for="districtCourt">District court: </label>-->
-  <!--          <input type="text" class="form-control" id="districtCourt" required-->
-  <!--                 [(ngModel)]="landRegister.titlePage.districtCourt" name="districtCourt">-->
-  <!--        </div>-->
-  <!--        <div class="form-group">-->
-  <!--          <label for="landRegistryDistrict">Land registry district: </label>-->
-  <!--          <input type="text" class="form-control" id="landRegistryDistrict" required-->
-  <!--                 [(ngModel)]="landRegister.titlePage.landRegistryDistrict" name="landRegistryDistrict">-->
-  <!--        </div>-->
-  <!--        <div class="form-group">-->
-  <!--          <label for="sheetNumber">Sheet number: </label>-->
-  <!--          <input type="text" class="form-control" id="sheetNumber" required-->
-  <!--                 [(ngModel)]="landRegister.titlePage.sheetNumber" name="sheetNumber">-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-
-  <!--    <div class="container">-->
-  <!--      <h2>Inventory register</h2>-->
-  <!--      <div class="container">-->
-  <!--        <div class="form-group">-->
-  <!--          <label for="subdistrict">Subdistrict: </label>-->
-  <!--          <input type="text" class="form-control" id="subdistrict" required-->
-  <!--                 [(ngModel)]="landRegister.inventoryRegister.subdistrict" name="subdistrict">-->
-  <!--        </div>-->
-  <!--        <div class="form-group">-->
-  <!--          <label for="hall">Hall: </label>-->
-  <!--          <input type="text" class="form-control" id="hall" required-->
-  <!--                 [(ngModel)]="landRegister.inventoryRegister.hall" name="hall">-->
-  <!--        </div>-->
-  <!--        <div class="form-group">-->
-  <!--          <label for="parcel">Parcel: </label>-->
-  <!--          <input type="text" class="form-control" id="parcel" required-->
-  <!--                 [(ngModel)]="landRegister.inventoryRegister.parcel" name="parcel">-->
-  <!--        </div>-->
-  <!--        <div class="form-group">-->
-  <!--          <label for="economicType">Economic typ: </label>-->
-  <!--          <input type="text" class="form-control" id="economicType" required-->
-  <!--                 [(ngModel)]="landRegister.inventoryRegister.economicType" name="economicType">-->
-  <!--        </div>-->
-  <!--        <div class="form-group">-->
-  <!--          <label for="location">Location: </label>-->
-  <!--          <input type="text" class="form-control" id="location" required-->
-  <!--                 [(ngModel)]="landRegister.inventoryRegister.location" name="location">-->
-  <!--        </div>-->
-  <!--        <div class="form-group">-->
-  <!--          <label for="size">Size: </label>-->
-  <!--          <input type="text" class="form-control" id="size" required-->
-  <!--                 [(ngModel)]="landRegister.inventoryRegister.size" name="size">-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-
-  <!--    <div class="container">-->
-  <!--      <h2>Owners</h2>-->
-
-  <!--      <div class="container">-->
-  <!--        <h3>Owner 1</h3>-->
-  <!--        <div class="container">-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="identityNumber_1">Identity number: </label>-->
-  <!--            <input type="text" class="form-control" id="identityNumber_1" required-->
-  <!--                   [(ngModel)]="landRegister.owners[0].identityNumber" name="identityNumber_1">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="title_1">Title: </label>-->
-  <!--            <input type="text" class="form-control" id="title_1" required-->
-  <!--                   [(ngModel)]="landRegister.owners[0].title" name="title_1">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="firstname_1">Firstname: </label>-->
-  <!--            <input type="text" class="form-control" id="firstname_1" required-->
-  <!--                   [(ngModel)]="landRegister.owners[0].firstName" name="firstname_1">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="lastname_1">Lastname: </label>-->
-  <!--            <input type="text" class="form-control" id="lastname_1" required-->
-  <!--                   [(ngModel)]="landRegister.owners[0].lastName" name="lastname_1">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="dateOfBirth_1">Date of birth: </label>-->
-  <!--            <input type="text" class="form-control" id="dateOfBirth_1" required-->
-  <!--                   [(ngModel)]="landRegister.owners[0].dateOfBirth" name="dateOfBirth_1">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="postcode_1">Postcode: </label>-->
-  <!--            <input type="text" class="form-control" id="postcode_1" required-->
-  <!--                   [(ngModel)]="landRegister.owners[0].postcode" name="postcode_1">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="city_1">City: </label>-->
-  <!--            <input type="text" class="form-control" id="city_1" required-->
-  <!--                   [(ngModel)]="landRegister.owners[0].city" name="city_1">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="street_1">Street: </label>-->
-  <!--            <input type="text" class="form-control" id="street_1" required-->
-  <!--                   [(ngModel)]="landRegister.owners[0].street" name="street_1">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="streetnumber_1">Streetnumber: </label>-->
-  <!--            <input type="text" class="form-control" id="streetnumber_1" required-->
-  <!--                   [(ngModel)]="landRegister.owners[0].streetNumber" name="streetnumber_1">-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-
-  <!--      <div class="container">-->
-  <!--        <h3>Owner 2</h3>-->
-  <!--        <div class="container">-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="identityNumber_2">Identity number: </label>-->
-  <!--            <input type="text" class="form-control" id="identityNumber_2" required-->
-  <!--                   [(ngModel)]="landRegister.owners[1].identityNumber" name="identityNumber_2">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="title_2">Title: </label>-->
-  <!--            <input type="text" class="form-control" id="title_2" required-->
-  <!--                   [(ngModel)]="landRegister.owners[1].title" name="title_2">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="firstname_2">Firstname: </label>-->
-  <!--            <input type="text" class="form-control" id="firstname_2" required-->
-  <!--                   [(ngModel)]="landRegister.owners[1].firstName" name="firstname_2">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="lastname_2">Lastname: </label>-->
-  <!--            <input type="text" class="form-control" id="lastname_2" required-->
-  <!--                   [(ngModel)]="landRegister.owners[1].lastName" name="lastname_2">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="dateOfBirth_2">Date of birth: </label>-->
-  <!--            <input type="text" class="form-control" id="dateOfBirth_2" required-->
-  <!--                   [(ngModel)]="landRegister.owners[1].dateOfBirth" name="dateOfBirth_2">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="postcode_2">Postcode: </label>-->
-  <!--            <input type="text" class="form-control" id="postcode_2" required-->
-  <!--                   [(ngModel)]="landRegister.owners[1].postcode" name="postcode_2">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="city_2">City: </label>-->
-  <!--            <input type="text" class="form-control" id="city_2" required-->
-  <!--                   [(ngModel)]="landRegister.owners[1].city" name="city_2">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="street_2">Street: </label>-->
-  <!--            <input type="text" class="form-control" id="street_2" required-->
-  <!--                   [(ngModel)]="landRegister.owners[1].street" name="street_2">-->
-  <!--          </div>-->
-  <!--          <div class="form-group">-->
-  <!--            <label for="streetnumber_2">Streetnumber: </label>-->
-  <!--            <input type="text" class="form-control" id="streetnumber_2" required-->
-  <!--                   [(ngModel)]="landRegister.owners[1].streetNumber" name="streetnumber_2">-->
-  <!--          </div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
 
   <!--    <div class="container">-->
   <!--      <h3>Reservation note</h3>-->
