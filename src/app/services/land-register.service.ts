@@ -4,6 +4,7 @@ import {LandRegister} from '../models/LandRegister';
 import {Observable, of} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 import {ReservationNoteRequest} from '../models/ReservationNoteRequest';
+import {FrontendResponse} from '../models/FrontendResponse';
 
 const url = 'http://149.233.56.37:8080';
 const queryAllLandRegisters = '/queryAllLandRegisters';
@@ -27,13 +28,13 @@ export class LandRegisterService {
     return this.httpClient.get<LandRegister[]>(url + queryAllLandRegisters);
   }
 
-  createLandRegister(newLandRegister: LandRegister): Observable<LandRegister> {
-    return this.httpClient.post<LandRegister>(url + createLandRegister, newLandRegister, httpOptions)
+  createLandRegister(newLandRegister: LandRegister): Observable<FrontendResponse> {
+    return this.httpClient.post<FrontendResponse>(url + createLandRegister, newLandRegister, httpOptions)
       .pipe(catchError(() => this.handleError('createLandRegister')));
   }
 
-  createReservationNote(reservationNoteRequest: ReservationNoteRequest): Observable<ReservationNoteRequest> {
-    return this.httpClient.post<LandRegister>(url + createReservationNote, reservationNoteRequest, httpOptions)
+  createReservationNote(reservationNoteRequest: ReservationNoteRequest): Observable<FrontendResponse> {
+    return this.httpClient.post<FrontendResponse>(url + createReservationNote, reservationNoteRequest, httpOptions)
       .pipe(catchError(() => this.handleError('createReservationNote')));
   }
 

@@ -2,6 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, Validators} from '@angular/forms';
 import {LandRegisterService} from '../../services/land-register.service';
 import {ReservationNoteRequest} from '../../models/ReservationNoteRequest';
+import {MatSnackBar} from '@angular/material';
+import {FrontendResponse} from '../../models/FrontendResponse';
+
+const creationSuccessfulMessage = 'Reservation note successfully created';
+const creationFailedMessage = 'Reservation note creation failed with message: ';
 
 @Component({
   selector: 'app-create-reservation-note',
@@ -46,7 +51,9 @@ export class CreateReservationNoteComponent implements OnInit {
     }
   );
 
-  constructor(private fb: FormBuilder, private landRegisterService: LandRegisterService) {
+  constructor(private fb: FormBuilder,
+              private landRegisterService: LandRegisterService,
+              private matSnackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -79,6 +86,20 @@ export class CreateReservationNoteComponent implements OnInit {
 
   createReservationNote() {
     const reservationNoteRequest: ReservationNoteRequest = this.reservationNoteRequest.value as ReservationNoteRequest;
-    this.landRegisterService.createReservationNote(reservationNoteRequest).subscribe();
+    this.landRegisterService.createReservationNote(reservationNoteRequest)
+      .subscribe(frontendResponse => this.showMessage(frontendResponse));
+  }
+
+  showMessage(frontendResponse: FrontendResponse) {
+    const snackBarMessage = frontendResponse.isSuccessful ? creationSuccessfulMessage : creationFailedMessage + frontendResponse.message;
+    const snackBarRef = this.createSnackBar(snackBarMessage);
+    snackBarRef._dismissAfter(5000);
+  }
+
+  createSnackBar(snackBarMessage: string) {
+    return this.matSnackBar.open(snackBarMessage, '', {
+      horizontalPosition: 'left',
+      verticalPosition: 'top'
+    });
   }
 }

@@ -2,6 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {LandRegister} from '../../models/LandRegister';
 import {FormArray, FormBuilder, Validators} from '@angular/forms';
 import {LandRegisterService} from '../../services/land-register.service';
+import {MatSnackBar} from '@angular/material';
+import {FrontendResponse} from '../../models/FrontendResponse';
+
+const creationSuccessfulMessage = 'Land register successfully created';
+const creationFailedMessage = 'Land register creation failed with message: ';
 
 @Component({
   selector: 'app-create-land-register',
@@ -47,7 +52,7 @@ export class CreateLandRegisterComponent implements OnInit {
     }
   );
 
-  constructor(private fb: FormBuilder, private landRegisterService: LandRegisterService) {
+  constructor(private fb: FormBuilder, private landRegisterService: LandRegisterService, private matSnackBar: MatSnackBar) {
   }
 
   ngOnInit() {
@@ -80,6 +85,21 @@ export class CreateLandRegisterComponent implements OnInit {
 
   createLandRegister() {
     const newLandRegister: LandRegister = this.landRegister.value as LandRegister;
-    this.landRegisterService.createLandRegister(newLandRegister).subscribe();
+
+    this.landRegisterService.createLandRegister(newLandRegister)
+      .subscribe(frontendResponse => this.showMessage(frontendResponse));
+  }
+
+  showMessage(frontendResponse: FrontendResponse) {
+    const snackBarMessage = frontendResponse.isSuccessful ? creationSuccessfulMessage : creationFailedMessage + frontendResponse.message;
+    const snackBarRef = this.createSnackBar(snackBarMessage);
+    snackBarRef._dismissAfter(5000);
+  }
+
+  createSnackBar(snackBarMessage: string) {
+    return this.matSnackBar.open(snackBarMessage, '', {
+      horizontalPosition: 'left',
+      verticalPosition: 'top'
+    });
   }
 }
