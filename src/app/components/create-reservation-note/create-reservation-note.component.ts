@@ -91,7 +91,13 @@ export class CreateReservationNoteComponent implements OnInit {
   }
 
   showMessage(frontendResponse: FrontendResponse) {
-    const snackBarMessage = frontendResponse.isSuccessful ? creationSuccessfulMessage : creationFailedMessage + frontendResponse.message;
+    console.log('frontendResponse.isSuccessful=' + frontendResponse.isSuccessful);
+    let snackBarMessage;
+    if (frontendResponse.message === '') {
+      snackBarMessage = creationSuccessfulMessage;
+    } else {
+      snackBarMessage = creationFailedMessage + frontendResponse.message;
+    }
     const snackBarRef = this.createSnackBar(snackBarMessage);
     snackBarRef._dismissAfter(5000);
   }
