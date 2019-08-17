@@ -159,6 +159,19 @@
                   </label>
                 </div>
               </div>
+              <div class="container">
+                <div class="form-group">
+                  <label>
+                    Select Co-ownership:
+                    <select class="form-control" formControlName="coOwnership" required>
+                      <option *ngFor="let coOwnershipPercentage of coOwnershipPercentages"
+                              [value]="coOwnershipPercentage.value">
+                        {{coOwnershipPercentage.viewValue}}
+                      </option>
+                    </select>
+                  </label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -195,23 +208,4 @@
   </form>
 
   <app-land-register-component [landRegister]="landRegister.value"></app-land-register-component>
-
-  <!--    <div class="container">-->
-  <!--      <h3>Reservation note</h3>-->
-  <!--      <div class="container">-->
-  <!--        <div class="form-group">-->
-  <!--          <label for="reservationNote">Reservation note: </label>-->
-  <!--          <input type="checkbox" class="form-control" id="reservationNote" required-->
-  <!--                 [(ngModel)]="landRegister.reservationNote" name="reservationNote">-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-
-  <!--    <button type="submit" class="btn btn-success"-->
-  <!--            [disabled]="!landRegisterForm.form.valid"-->
-  <!--    >Create land register</button>-->
-
-  <!--  </form>-->
-
-  <!--  <app-land-register-component [landRegister]="landRegister"></app-land-register-component>-->
 </div>

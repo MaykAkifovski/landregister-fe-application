@@ -8,4 +8,5 @@ export class Owner {
   city: string;
   street: string;
   streetNumber: string;
+  coOwnership: string;
 }

@@ -15,6 +15,29 @@ const creationFailedMessage = 'Land register creation failed with message: ';
 })
 export class CreateLandRegisterComponent implements OnInit {
 
+  coOwnershipPercentages = [
+    {value: 5, viewValue: '5% Co-ownership'},
+    {value: 10, viewValue: '10% Co-ownership'},
+    {value: 15, viewValue: '15% Co-ownership'},
+    {value: 20, viewValue: '20% Co-ownership'},
+    {value: 25, viewValue: '25% Co-ownership'},
+    {value: 30, viewValue: '30% Co-ownership'},
+    {value: 35, viewValue: '35% Co-ownership'},
+    {value: 40, viewValue: '40% Co-ownership'},
+    {value: 45, viewValue: '45% Co-ownership'},
+    {value: 50, viewValue: '50% Co-ownership'},
+    {value: 55, viewValue: '55% Co-ownership'},
+    {value: 60, viewValue: '60% Co-ownership'},
+    {value: 65, viewValue: '65% Co-ownership'},
+    {value: 70, viewValue: '70% Co-ownership'},
+    {value: 75, viewValue: '75% Co-ownership'},
+    {value: 80, viewValue: '80% Co-ownership'},
+    {value: 85, viewValue: '85% Co-ownership'},
+    {value: 90, viewValue: '90% Co-ownership'},
+    {value: 95, viewValue: '95% Co-ownership'},
+    {value: 100, viewValue: '100% Co-ownership'}
+  ];
+
   landRegister = this.fb.group(
     {
       docType: ['landRegister'],
@@ -43,7 +66,8 @@ export class CreateLandRegisterComponent implements OnInit {
               postcode: ['', Validators.required],
               city: ['', Validators.required],
               street: ['', Validators.required],
-              streetNumber: ['', Validators.required]
+              streetNumber: ['', Validators.required],
+              coOwnership: ['', Validators.required]
             }
           )
         ]
@@ -73,7 +97,8 @@ export class CreateLandRegisterComponent implements OnInit {
           postcode: ['', Validators.required],
           city: ['', Validators.required],
           street: ['', Validators.required],
-          streetNumber: ['', Validators.required]
+          streetNumber: ['', Validators.required],
+          coOwnership: ['', Validators.required]
         }
       )
     );
@@ -86,8 +111,14 @@ export class CreateLandRegisterComponent implements OnInit {
   createLandRegister() {
     const newLandRegister: LandRegister = this.landRegister.value as LandRegister;
 
-    this.landRegisterService.createLandRegister(newLandRegister)
-      .subscribe(frontendResponse => this.showMessage(frontendResponse));
+    if (this.isCoOwnership100(newLandRegister)) {
+      this.landRegisterService.createLandRegister(newLandRegister)
+        .subscribe(frontendResponse => this.showMessage(frontendResponse));
+    } else {
+      const snackBarMessage = 'Total Co-ownership must be 100%!';
+      const snackBarRef = this.createSnackBar(snackBarMessage);
+      snackBarRef._dismissAfter(5000);
+    }
   }
 
   showMessage(frontendResponse: FrontendResponse) {
@@ -99,6 +130,14 @@ export class CreateLandRegisterComponent implements OnInit {
     }
     const snackBarRef = this.createSnackBar(snackBarMessage);
     snackBarRef._dismissAfter(5000);
+  }
+
+  isCoOwnership100(newLandRegister: LandRegister): boolean {
+    const totalCoOwnership = newLandRegister.owners
+      .map(owner => owner.coOwnership)
+      .map(ownerCoOwnership => parseInt(ownerCoOwnership, 10))
+      .reduce(((accumulator, currentValue) => accumulator + currentValue));
+    return totalCoOwnership === 100;
   }
 
   createSnackBar(snackBarMessage: string) {
